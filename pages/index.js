@@ -7,11 +7,27 @@ const DUMMY_MEETUPS = [
     image:
       "https://upload.wikimedia.org/wikipedia/commons/4/45/Standbeeld_in_Oostende.jpg",
     address: "Some address 5, 12345 Some City",
+    description: "This is a first meetup",
+  },
+  {
+    id: "m2",
+    title: "A Second Meetup",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/4/45/Standbeeld_in_Oostende.jpg",
+    address: "Some address 10, 12345 Some City",
+    description: "This is a second meetup",
   },
 ];
 
-function HomePage() {
-  return <MeetupList meetups={DUMMY_MEETUPS} />;
+function HomePage(props) {
+  return <MeetupList meetups={props.meetups} />;
+}
+
+export async function getStaticProps() {
+  //fetch data from api
+  return {
+    props: { meetups: DUMMY_MEETUPS },
+  };
 }
 
 export default HomePage;
